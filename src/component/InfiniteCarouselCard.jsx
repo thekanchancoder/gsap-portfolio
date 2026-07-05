@@ -4,15 +4,17 @@ import gsap from "@/libs/gsap";
 
 const card_w = 250;
 const card_h = 300;
+const scale = 1.2;
 const card_gap = 20;
 const duration = 25;
+const track_h = card_h + scale;
 
 const InfiniteCarouselCard = ({ projects }) => {
   const trackRef = useRef(null);
   const tweenRef = useRef(null);
 
   useEffect(() => {
-    const singleCardWidth = projects.length * (card_h + card_gap);
+    const singleCardWidth = projects.length * (card_w + card_gap);
 
     tweenRef.current = gsap.to(trackRef.current, {
       x: -singleCardWidth,
@@ -29,15 +31,16 @@ const InfiniteCarouselCard = ({ projects }) => {
   return (
     <div
     style={{
-        padding: `${card_h * 0.2}px 0 24px`,
+        padding: `${track_h * 0.6}px 0 24px`,
       }}
-      className="overflow-hidden w-full"
+      className="overflow-hidden "
       
     >
       <div
         ref={trackRef}
         className="flex flex-row items-center"
         style={{
+       
           gap: `${card_gap}px`,
           width: "max-content",
         }}

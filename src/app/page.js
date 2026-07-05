@@ -10,7 +10,7 @@ export default function Home() {
 
   const triggerRef=useRef(null);
   return (
-   <main className="h-screen w-full flex items-center bg-black ">
+   <main className="h-screen w-full flex items-start bg-black ">
  <InfiniteCarouselCard projects={projects} />
 
    </main>

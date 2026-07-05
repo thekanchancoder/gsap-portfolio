@@ -2,6 +2,7 @@ import TextReveal from "./TextReveal";
 import { useRef } from "react";
 import gsap from "@/libs/gsap";
 import { useGSAP } from "@gsap/react";
+import useViewTransition from "@/hooks/useViewTransition";
 
 const card_w = 250;
 const card_h = 300;
@@ -59,32 +60,39 @@ const CarouselCard = ({ project, onHoverStart, onHoverEnd }) => {
     numberRef.current?.reverse();
     titleRef.current?.reverse();
   };
+  const navigateTo = useViewTransition()
+const handleClick = () => {
+navigateTo(`/project/${project.slug}`)
+
+}
 
   return (
     <div
       ref={cardRef}
+onClick={handleClick}
+
       onMouseEnter={onEnter}
       onMouseLeave={onLeave}
       style={{
         width: card_w,
         height: card_h,
         flexShrink: 0,
-        overflow: "visible",
+        overflow: "hidden",
         cursor: "pointer",
       }}
-      className="relative"
+      className="relative rounded-xl overflow-hidden"
     >
       {/* Title Panel */}
       <div
-        style={{ bottom: "calc(100% + 4rem)" }}
-        className="absolute left-0 pointer-events-none flex flex-col gap-[2rem]"
+        style={{ bottom: "calc(100% + 1.3rem)" }}
+        className="absolute left-0 pointer-events-none flex flex-col gap-[0.8rem]"
       >
-        <TextReveal ref={numberRef} trigger="manual" splitType="chars">
-          <h3 className="text-[2rem] text-white">{project.number}</h3>
+        <TextReveal ref={numberRef}  duration={0.25} trigger="manual" splitType="chars">
+          <h3 className="text-[1rem] text-white">{project.number}</h3>
         </TextReveal>
 
-        <TextReveal ref={titleRef} trigger="manual" splitType="words">
-          <h3 className="text-[2rem] text-white">{project.title}</h3>
+        <TextReveal ref={titleRef} duration={0.25} trigger="manual" splitType="words">
+          <h3 className="text-[1rem] text-white">{project.title}</h3>
         </TextReveal>
       </div>
 

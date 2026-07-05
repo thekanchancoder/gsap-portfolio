@@ -1,2 +1,13 @@
 @import "tailwindcss";
 
+:root{
+    font-family: var(--font-montenegrin);
+font-family: var(--font-yuyu);
+}
+
+h1,h3,span{
+   font-family: var(--font-montserrat);
+}
+h2,p,h4{
+   font-family: var(--font-yuyu);
+}
