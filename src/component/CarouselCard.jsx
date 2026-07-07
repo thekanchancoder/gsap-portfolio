@@ -77,10 +77,10 @@ onClick={handleClick}
         width: card_w,
         height: card_h,
         flexShrink: 0,
-        overflow: "hidden",
+       overflow:"visible",
         cursor: "pointer",
       }}
-      className="relative rounded-xl overflow-hidden"
+      className="relative  "
     >
       {/* Title Panel */}
       <div
